@@ -4,11 +4,15 @@ import CoreConcepts from "./components/CoreConcepts.tsx";
 import TabButton from "./components/TabButton.tsx";
 
 function App() {
+  let tabContent = "Please click a button";
+  const handleSelect = (selectedButton: string) => (): void => {
+    console.log("Selected button: ", selectedButton);
+    tabContent = selectedButton;
+    console.log(tabContent);
+  };
+
   return (
     <>
-      <header>
-        <h1>Heelo World</h1>
-      </header>
       <Header></Header>
       <main>
         <section id="core-concepts">
@@ -21,21 +25,21 @@ function App() {
 
         <section id="examples">
           <h2>Examples</h2>
-
           <menu>
-            <TabButton isActive={true} onClick={() => console.log("hi")}>
+            <TabButton isActive={true} onClick={handleSelect("components")}>
               Components
             </TabButton>
-            <TabButton isActive={false} onClick={() => console.log("hi")}>
+            <TabButton isActive={false} onClick={handleSelect("jsx")}>
               JSX
             </TabButton>
-            <TabButton isActive={false} onClick={() => console.log("hi")}>
+            <TabButton isActive={false} onClick={handleSelect("props")}>
               Props
             </TabButton>
-            <TabButton isActive={false} onClick={() => console.log("hi")}>
+            <TabButton isActive={false} onClick={handleSelect("state")}>
               State
             </TabButton>
           </menu>
+          {tabContent}
         </section>
       </main>
     </>

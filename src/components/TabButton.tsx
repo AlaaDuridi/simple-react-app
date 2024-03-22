@@ -1,3 +1,8 @@
+interface TabButtonProps {
+  children: React.ReactNode;
+  onClick: () => void;
+  isActive: boolean;
+}
 export default function TabButton({
   children,
   onClick,
@@ -8,10 +13,4 @@ export default function TabButton({
       {children}
     </button>
   );
-}
-
-interface TabButtonProps {
-  children: React.ReactNode;
-  onClick: () => void;
-  isActive: boolean;
 }
