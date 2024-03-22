@@ -10,7 +10,7 @@ function App() {
     tabContent = selectedButton;
     console.log(tabContent);
   };
-
+  console.log("APP COMPONENT");
   return (
     <>
       <Header></Header>
