@@ -1,16 +1,36 @@
 import { CORE_CONCEPTS } from "./data";
+import { useState } from "react";
 import Header from "./components/Header/Header.tsx";
 import CoreConcepts from "./components/CoreConcepts.tsx";
 import TabButton from "./components/TabButton.tsx";
+import { EXAMPLES } from "./data";
 
 function App() {
-  let tabContent = "Please click a button";
-  const handleSelect = (selectedButton: string) => (): void => {
-    console.log("Selected button: ", selectedButton);
-    tabContent = selectedButton;
-    console.log(tabContent);
-  };
-  console.log("APP COMPONENT");
+  const [selectedTopic, setSelectedTopic] = useState("PLease select a topic");
+
+  function handleSelect(selectedButton: string): void {
+    console.log(selectedButton);
+    setSelectedTopic(selectedButton);
+  }
+
+  let tabContent = <p>Please Slect a topic</p>;
+
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>
+          {/* type assertion */}
+          {EXAMPLES[selectedTopic as keyof typeof EXAMPLES]?.title ||
+            selectedTopic}
+        </h3>
+        <p>{EXAMPLES[selectedTopic as keyof typeof EXAMPLES]?.description}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic as keyof typeof EXAMPLES]?.code}</code>
+        </pre>
+      </div>
+    );
+  }
+
   return (
     <>
       <Header></Header>
@@ -26,16 +46,28 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton isActive={true} onClick={handleSelect("components")}>
+            <TabButton
+              isActive={selectedTopic === "components"}
+              onClick={() => handleSelect("components")}
+            >
               Components
             </TabButton>
-            <TabButton isActive={false} onClick={handleSelect("jsx")}>
+            <TabButton
+              isActive={selectedTopic === "jsx"}
+              onClick={() => handleSelect("jsx")}
+            >
               JSX
             </TabButton>
-            <TabButton isActive={false} onClick={handleSelect("props")}>
+            <TabButton
+              isActive={selectedTopic === "props"}
+              onClick={() => handleSelect("props")}
+            >
               Props
             </TabButton>
-            <TabButton isActive={false} onClick={handleSelect("state")}>
+            <TabButton
+              isActive={selectedTopic === "state"}
+              onClick={() => handleSelect("state")}
+            >
               State
             </TabButton>
           </menu>

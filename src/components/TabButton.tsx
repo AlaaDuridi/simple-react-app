@@ -8,7 +8,6 @@ export default function TabButton({
   onClick,
   isActive,
 }: TabButtonProps) {
-  console.log("TAB BUTTON COMPONENT");
   return (
     <button onClick={onClick} className={isActive ? "active" : ""}>
       {children}
