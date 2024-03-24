@@ -1,6 +1,6 @@
-export default function Section({ title, children, id }: SectionProps) {
+export default function Section({ title, children, ...props }: SectionProps) {
   return (
-    <section id={id}>
+    <section {...props}>
       <h2>{title}</h2>
       {children}
     </section>
@@ -10,5 +10,6 @@ export default function Section({ title, children, id }: SectionProps) {
 interface SectionProps {
   title: string;
   children: React.ReactNode;
-  id: string;
+  id?: string;
+  className?: string;
 }
