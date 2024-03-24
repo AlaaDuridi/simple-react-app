@@ -1,18 +1,13 @@
-interface CoreConceptsProps {
-  image: string;
-  title: string;
-  description: string;
-}
-export default function CoreConcepts({
-  image,
-  title,
-  description,
-}: CoreConceptsProps) {
+import CoreConcept from "./CoreConcept.tsx";
+import { CORE_CONCEPTS } from "../data.ts";
+export default function CoreConcepts() {
   return (
-    <li>
-      <img src={image} alt={title} />
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
+    <section id="core-concepts">
+      <ul>
+        {CORE_CONCEPTS.map((concept, index) => (
+          <CoreConcept {...concept} key={index} />
+        ))}
+      </ul>
+    </section>
   );
 }

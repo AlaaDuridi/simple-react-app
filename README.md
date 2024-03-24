@@ -38,3 +38,5 @@ export default {
 
 - all react hooks start with `use` like `useState`
 - React hooks called from the top level of the component function i.e: inside the component directly, and not inside sub functions and not outside the component function 
+ 
+ - Splitting Components by feature and state : core-concepts and examples
