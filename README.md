@@ -1,5 +1,4 @@
-## Simple React App, 
-### implementing react essentials 
+### Simple React App, to practice React Essentials
 
 - commands: 
 > npm install <br>
